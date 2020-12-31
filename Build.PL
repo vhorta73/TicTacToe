@@ -4,4 +4,7 @@ use Module::Build;
 Module::Build->new( 
   module_name     => 'TicTacToe',
   license         => 'perl',
+  test_files      => [
+    't/TicTacToe/Model',
+  ],
 )->create_build_script;
