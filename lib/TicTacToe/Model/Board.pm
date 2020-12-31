@@ -127,13 +127,14 @@ sub winner {
     foreach my $cell ( @$cells ) {
       my $value = $self->_data->{ $cell };
 
-      # If the cell does not have data, then it is not played yet.
+      # If the cell does not have data, then it is not yet played 
+      # and thus impossible win in this cell group.
       last if ( $value // '' ) eq '';
 
       $same_values{ $value }++;
     }
 
-    # No same value, means nothing played in this group of cells
+    # No keys set on %same_value, means nothing played in this group of cells
     next unless keys %same_values;
 
     # Plays happened in these $cells but do all same values sum up to three? 
