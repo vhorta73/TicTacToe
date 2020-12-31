@@ -2,7 +2,7 @@ package TicTacToe;
 
 =head1 NAME
 
-TicTacToe - The TicTacTow build class.
+TicTacToe - The TicTacToe build class.
 
 =head1 SYNOPSIS
 
