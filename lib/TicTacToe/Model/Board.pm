@@ -137,11 +137,14 @@ sub winner {
     # No keys set on %same_value, means nothing played in this group of cells
     next unless keys %same_values;
 
-    # Plays happened in these $cells but do all same values sum up to three? 
-    return 1 if max( values %same_values ) == 3;
+    # Plays happened in these 3 $cells but is all from the same player? 
+    if ( max( values %same_values ) == 3 ) {
+      my @keys = keys %same_values;
+      return $keys[0];
+    }
   }
 
-  return 0;
+  return '';
 }
 
 
