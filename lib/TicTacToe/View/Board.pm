@@ -17,20 +17,20 @@ supplied. Main method is L</show> and will work as follows:
 
   $self->show( 
     data => {
-      1 => 'O', 2 => 'X', 3 => '',
-      4 => '',  5 => '',  6 => '',
       7 => '',  8 => 'X', 9 => '',
+      4 => '',  5 => '',  6 => '',
+      1 => 'O', 2 => 'X', 3 => '',
     },
   );
 
 Displays:
 
     +---+---+---+
-    | O | X |   |
+    |   | X |   |
     +---+---+---+
     |   |   |   |
     +---+---+---+
-    |   | X |   |
+    | O | X |   |
     +---+---+---+
 
 
@@ -46,9 +46,9 @@ const my $COLUMN_SEPARATOR => "|";
 const my $ROW_SEPARATOR    => "-";
 const my $JOIN_CHAR        => "+";
 const my @GAME_STRUCTURE   => (
-  [ 1, 2, 3 ],
-  [ 4, 5, 6 ],
   [ 7, 8, 9 ],
+  [ 4, 5, 6 ],
+  [ 1, 2, 3 ],
 );
 
 #------------------------------------------------------------------------------
@@ -60,9 +60,9 @@ data is supplied, nothing is done. Data structure is expected as follows:
 
   $self->show( 
     data => {
-      1 => 'O', 2 => 'X', 3 => '',
-      4 => '',  5 => '',  6 => '',
       7 => '',  8 => 'X', 9 => '',
+      4 => '',  5 => '',  6 => '',
+      1 => 'O', 2 => 'X', 3 => '',
     },
     size => 1,
   );
@@ -70,11 +70,11 @@ data is supplied, nothing is done. Data structure is expected as follows:
 to display:
 
     +---+---+---+
-    | O | X |   |
+    |   | X |   |
     +---+---+---+
     |   |   |   |
     +---+---+---+
-    |   | X |   |
+    | O | X |   |
     +---+---+---+
 
 return nothing

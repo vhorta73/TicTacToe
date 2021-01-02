@@ -22,9 +22,9 @@ my @board_test = (
   { 
     msg         => 'Testing args with no values set',
     init_args   => {
-      1 => '', 2 => '', 3 => '', 
-      4 => '', 5 => '', 6 => '', 
       7 => '', 8 => '', 9 => '',
+      4 => '', 5 => '', 6 => '', 
+      1 => '', 2 => '', 3 => '', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '', },
@@ -33,9 +33,9 @@ my @board_test = (
   { 
     msg         => 'Testing no winning with values set',
     init_args   => {
-      1 => '1', 2 => '1', 3 => '2', 
-      4 => '2', 5 => '2', 6 => '1', 
       7 => '1', 8 => '2', 9 => '1',
+      4 => '2', 5 => '2', 6 => '1', 
+      1 => '1', 2 => '1', 3 => '2', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '', },
@@ -44,9 +44,9 @@ my @board_test = (
   { 
     msg         => 'Testing winning first row',
     init_args   => {
-      1 => '1', 2 => '1', 3 => '1', 
-      4 => '',  5 => '',  6 => '', 
       7 => '',  8 => '',  9 => '',
+      4 => '',  5 => '',  6 => '', 
+      1 => '1', 2 => '1', 3 => '1', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -55,9 +55,9 @@ my @board_test = (
   { 
     msg         => 'Testing winning second row',
     init_args   => {
-      1 => '',  2 => '',  3 => '', 
-      4 => '1', 5 => '1', 6 => '1', 
       7 => '',  8 => '',  9 => '',
+      4 => '1', 5 => '1', 6 => '1', 
+      1 => '',  2 => '',  3 => '', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -66,9 +66,9 @@ my @board_test = (
   { 
     msg         => 'Testing winning third row',
     init_args   => {
-      1 => '',  2 => '',  3 => '', 
-      4 => '',  5 => '',  6 => '', 
       7 => '1', 8 => '1', 9 => '1',
+      4 => '',  5 => '',  6 => '', 
+      1 => '',  2 => '',  3 => '', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -77,9 +77,9 @@ my @board_test = (
   { 
     msg         => 'Testing winning first column',
     init_args   => {
-      1 => '1',  2 => '',  3 => '', 
-      4 => '1',  5 => '',  6 => '', 
       7 => '1',  8 => '',  9 => '',
+      4 => '1',  5 => '',  6 => '', 
+      1 => '1',  2 => '',  3 => '', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -88,9 +88,9 @@ my @board_test = (
   { 
     msg         => 'Testing winning second column',
     init_args   => {
-      1 => '',  2 => '1',  3 => '', 
-      4 => '',  5 => '1',  6 => '', 
       7 => '',  8 => '1',  9 => '',
+      4 => '',  5 => '1',  6 => '', 
+      1 => '',  2 => '1',  3 => '', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -99,9 +99,9 @@ my @board_test = (
   { 
     msg         => 'Testing winning third column',
     init_args   => {
-      1 => '',  2 => '',  3 => '1', 
-      4 => '',  5 => '',  6 => '1', 
       7 => '',  8 => '',  9 => '1',
+      4 => '',  5 => '',  6 => '1', 
+      1 => '',  2 => '',  3 => '1', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -110,9 +110,9 @@ my @board_test = (
   { 
     msg         => 'Testing winning cross down',
     init_args   => {
-      1 => '1', 2 => '',  3 => '', 
-      4 => '',  5 => '1', 6 => '', 
       7 => '',  8 => '',  9 => '1',
+      4 => '',  5 => '1', 6 => '', 
+      1 => '1', 2 => '',  3 => '', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -121,9 +121,9 @@ my @board_test = (
   { 
     msg         => 'Testing winning cross up',
     init_args   => {
-      1 => '',  2 => '',  3 => '1', 
-      4 => '',  5 => '1', 6 => '', 
       7 => '1', 8 => '',  9 => '',
+      4 => '',  5 => '1', 6 => '', 
+      1 => '',  2 => '',  3 => '1', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -132,9 +132,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning first row',
     init_args   => {
-      1 => '1', 2 => '1', 3 => '1', 
-      4 => '2', 5 => '',  6 => '2', 
       7 => '2', 8 => '2', 9 => '',
+      4 => '2', 5 => '',  6 => '2', 
+      1 => '1', 2 => '1', 3 => '1', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -143,9 +143,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning second row',
     init_args   => {
-      1 => '',  2 => '',  3 => '2', 
-      4 => '1', 5 => '1', 6 => '1', 
       7 => '',  8 => '',  9 => '2',
+      4 => '1', 5 => '1', 6 => '1', 
+      1 => '',  2 => '',  3 => '2', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -154,9 +154,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning third row',
     init_args   => {
-      1 => '2', 2 => '2', 3 => '', 
-      4 => '',  5 => '2', 6 => '', 
       7 => '1', 8 => '1', 9 => '1',
+      4 => '',  5 => '2', 6 => '', 
+      1 => '2', 2 => '2', 3 => '', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -165,9 +165,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning first column',
     init_args   => {
-      1 => '1',  2 => '',  3 => '2', 
-      4 => '1',  5 => '2', 6 => '2', 
       7 => '1',  8 => '',  9 => '',
+      4 => '1',  5 => '2', 6 => '2', 
+      1 => '1',  2 => '',  3 => '2', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -176,9 +176,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning second column',
     init_args   => {
-      1 => '',  2 => '1',  3 => '2', 
-      4 => '',  5 => '1',  6 => '2', 
       7 => '2', 8 => '1',  9 => '',
+      4 => '',  5 => '1',  6 => '2', 
+      1 => '',  2 => '1',  3 => '2', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -187,9 +187,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning third column',
     init_args   => {
-      1 => '2', 2 => '',  3 => '1', 
-      4 => '2', 5 => '2', 6 => '1', 
       7 => '',  8 => '2', 9 => '1',
+      4 => '2', 5 => '2', 6 => '1', 
+      1 => '2', 2 => '',  3 => '1', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -198,9 +198,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning cross down',
     init_args   => {
-      1 => '1', 2 => '2', 3 => '2', 
-      4 => '',  5 => '1', 6 => '2', 
       7 => '2', 8 => '',  9 => '1',
+      4 => '',  5 => '1', 6 => '2', 
+      1 => '1', 2 => '2', 3 => '2', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -209,9 +209,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning cross up',
     init_args   => {
-      1 => '2', 2 => '2', 3 => '1', 
-      4 => '2', 5 => '1', 6 => '2', 
       7 => '1', 8 => '2', 9 => '2',
+      4 => '2', 5 => '1', 6 => '2', 
+      1 => '2', 2 => '2', 3 => '1', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '1', },
@@ -220,9 +220,9 @@ my @board_test = (
   { 
     msg         => 'Testing combined winning cross up on other player',
     init_args   => {
-      1 => '1', 2 => '1', 3 => '2', 
-      4 => '1', 5 => '2', 6 => '1', 
       7 => '2', 8 => '1', 9 => '1',
+      4 => '1', 5 => '2', 6 => '1', 
+      1 => '1', 2 => '1', 3 => '2', 
     }, 
     tests       => [
       { method_name => 'winner', expected => '2', },

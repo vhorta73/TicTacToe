@@ -7,15 +7,9 @@ TicTacToe::Model::Board - The TicTacToe Board model class
 =head1 SYNOPSYS
 
   TicTacToe::Model::Board->new(
-    1 => 'X',
-    2 => '',
-    3 => '',
-    4 => 'X',
-    5 => '',
-    6 => '',
-    7 => 'O',
-    8 => '',
-    9 => 'O',
+    7 => 'O',   8 => '',   9 => 'O',
+    4 => 'X',   5 => '',   6 => '',
+    1 => 'X',   2 => '',   3 => '',
   );
 
 =head1 DESCRIPTION
@@ -26,11 +20,11 @@ data, it can answer many questions.
 Board data supplied is expected to come represented with following cell numbers:
 
     +---+---+---+
-    | 1 | 2 | 3 |
+    | 7 | 8 | 9 |
     +---+---+---+
     | 4 | 5 | 6 |
     +---+---+---+
-    | 7 | 8 | 9 |
+    | 1 | 2 | 3 |
     +---+---+---+
 
 =cut
@@ -78,15 +72,15 @@ has _data => ( is => 'ro', required => 1 );
 =head2 new
 
   TicTacToe::Model::Board->new(
-    1 => $cell_1_value, # OPTIONAL: String, defaults to empty string.
-    2 => $cell_2_value, # OPTIONAL: String, defaults to empty string.
-    3 => $cell_3_value, # OPTIONAL: String, defaults to empty string.
-    4 => $cell_4_value, # OPTIONAL: String, defaults to empty string.
-    5 => $cell_5_value, # OPTIONAL: String, defaults to empty string.
-    6 => $cell_6_value, # OPTIONAL: String, defaults to empty string.
     7 => $cell_7_value, # OPTIONAL: String, defaults to empty string.
     8 => $cell_8_value, # OPTIONAL: String, defaults to empty string.
     9 => $cell_9_value, # OPTIONAL: String, defaults to empty string.
+    4 => $cell_4_value, # OPTIONAL: String, defaults to empty string.
+    5 => $cell_5_value, # OPTIONAL: String, defaults to empty string.
+    6 => $cell_6_value, # OPTIONAL: String, defaults to empty string.
+    1 => $cell_1_value, # OPTIONAL: String, defaults to empty string.
+    2 => $cell_2_value, # OPTIONAL: String, defaults to empty string.
+    3 => $cell_3_value, # OPTIONAL: String, defaults to empty string.
   );
 
 =cut
