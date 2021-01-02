@@ -7,8 +7,8 @@ TicTacToe - The TicTacToe build class.
 =head1 SYNOPSIS
 
   perl Build.PL
-  Build test
-  Build install
+
+  TicTacToe::Game->new()->run();
 
 =head1 DESCRIPTION
 

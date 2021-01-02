@@ -1,10 +1,15 @@
 use Module::Build;
 # See perldoc Module::Build for details of how this works
 
-Module::Build->new( 
+my $build = Module::Build->new( 
   module_name     => 'TicTacToe',
   license         => 'perl',
   test_files      => [
     't/TicTacToe/Model',
   ],
-)->create_build_script;
+  requires => { 'RLearn' => '1.00', },
+);
+
+$build->dispatch( 'build' );
+$build->dispatch( 'test', verbose => 1 );
+$build->dispatch( 'install' );
