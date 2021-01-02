@@ -16,7 +16,7 @@ my @board_test = (
     msg         => 'Testing no args',
     init_args   => {}, 
     tests       => [
-      { method_name => 'winner', expected => '', },
+      { method_name => 'winner', expected => 0, },
     ]
   },
   { 
@@ -27,7 +27,7 @@ my @board_test = (
       1 => '', 2 => '', 3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '', },
+      { method_name => 'winner', expected => 0, },
     ]
   },
   { 
@@ -38,7 +38,7 @@ my @board_test = (
       1 => '1', 2 => '1', 3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '', },
+      { method_name => 'winner', expected => -1, },
     ]
   },
   { 
@@ -49,7 +49,7 @@ my @board_test = (
       1 => '1', 2 => '1', 3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -60,7 +60,7 @@ my @board_test = (
       1 => '',  2 => '',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -71,7 +71,7 @@ my @board_test = (
       1 => '',  2 => '',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -82,7 +82,7 @@ my @board_test = (
       1 => '1',  2 => '',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -93,7 +93,7 @@ my @board_test = (
       1 => '',  2 => '1',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -104,7 +104,7 @@ my @board_test = (
       1 => '',  2 => '',  3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -115,7 +115,7 @@ my @board_test = (
       1 => '1', 2 => '',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -126,7 +126,7 @@ my @board_test = (
       1 => '',  2 => '',  3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -137,7 +137,7 @@ my @board_test = (
       1 => '1', 2 => '1', 3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -148,7 +148,7 @@ my @board_test = (
       1 => '',  2 => '',  3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -159,7 +159,7 @@ my @board_test = (
       1 => '2', 2 => '2', 3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -170,7 +170,7 @@ my @board_test = (
       1 => '1',  2 => '',  3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -181,7 +181,7 @@ my @board_test = (
       1 => '',  2 => '1',  3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -192,7 +192,7 @@ my @board_test = (
       1 => '2', 2 => '',  3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -203,7 +203,7 @@ my @board_test = (
       1 => '1', 2 => '2', 3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -214,7 +214,7 @@ my @board_test = (
       1 => '2', 2 => '2', 3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '1', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
   { 
@@ -225,7 +225,7 @@ my @board_test = (
       1 => '1', 2 => '1', 3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => '2', },
+      { method_name => 'winner', expected => 1, },
     ]
   },
 

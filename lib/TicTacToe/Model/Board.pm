@@ -31,7 +31,7 @@ Board data supplied is expected to come represented with following cell numbers:
 
 use Modern::Perl;
 use Const::Fast;
-use List::Util qw{ max };
+use List::Util qw{ max sum };
 
 use Moo;
 use namespace::clean;
@@ -102,11 +102,12 @@ sub BUILDARGS {
 
 =head2 winner
 
-Returns the value set on the winning cell. Default to empty string otherwise.
+Returns 1 if there is a winning player, 0 if no winner yet.. and -1 if not first
+possible plays and no winner.
 
-  my $winner = $self->winner();
+  if ( $self->winner() ) { .. 
 
-return string
+return Number
 
 =cut
 
@@ -119,28 +120,62 @@ sub winner {
     # The given list of $cells must have same values to be a winning position.
     my %same_values;
     foreach my $cell ( @$cells ) {
-      my $value = $self->_data->{ $cell };
+      my $player = $self->_data->{ $cell };
 
       # If the cell does not have data, then it is not yet played 
       # and thus impossible win in this cell group.
-      last if ( $value // '' ) eq '';
+      last if ( $player // '' ) eq '';
 
-      $same_values{ $value }++;
+      $same_values{ $player }++;
     }
 
     # No keys set on %same_value, means nothing played in this group of cells
     next unless keys %same_values;
 
-    # Plays happened in these 3 $cells but is all from the same player? 
-    if ( max( values %same_values ) == 3 ) {
-      my @keys = keys %same_values;
-      return $keys[0];
-    }
+    # Plays happened in these 3 $cells from the same player. 
+    return 1 if max( values %same_values ) == 3;
   }
 
-  return '';
+  return -1 unless scalar @{ $self->availableActions() };
+ 
+  return 0;
 }
 
+#------------------------------------------------------------------------------
+
+=head2 state
+
+Returns the board state as it is seen now.
+
+  my $state = $self->state();
+
+return string
+
+=cut
+
+sub state {
+  my ( $self ) = @_;
+
+  return join( ',', values %{ $self->_data } ); 
+}
+
+#------------------------------------------------------------------------------
+
+=head2 availableActions
+
+Returns the list of available plays that be done on the board as it is now.
+
+  my $available_actions = $self->availableActions();
+
+return array ref
+
+=cut
+
+sub availableActions {
+  my ( $self ) = @_;
+
+  return [ grep { $self->_data->{ $_ } eq '' } keys %{ $self->_data } ]; 
+}
 
 #------------------------------------------------------------------------------
 1;

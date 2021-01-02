@@ -100,7 +100,7 @@ sub show {
     push @print_lines, $self->_row_separator( $size );
   }  
 
-  print join( "\n", @print_lines );
+  print join( "\n", @print_lines ) . "\n";
 
   return;
 }
