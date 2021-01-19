@@ -21,6 +21,7 @@ use Modern::Perl;
 use Moo;
 use namespace::clean;
 
+extends 'TicTacToe::Player';
 with 'TicTacToe::Player::Interface';
 
 #------------------------------------------------------------------------------
@@ -85,6 +86,18 @@ sub getPlayFrom {
 
   return $selected_action;
 }
+
+#------------------------------------------------------------------------------
+
+=head2 gameOver
+
+See L<TicTacToe::Player::Interface/gameOver>
+
+Noop
+
+=cut
+
+sub gameOver { return; }
 
 #------------------------------------------------------------------------------
 1;

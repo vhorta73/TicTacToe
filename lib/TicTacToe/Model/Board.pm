@@ -100,19 +100,111 @@ sub BUILDARGS {
 
 #------------------------------------------------------------------------------
 
-=head2 winner
+=head2 hasAWinner
 
-Returns 1 if there is a winning player, 0 if no winner yet.. and -1 if not first
-possible plays and no winner.
+Returns 1 if there is a winning player and 0 otherwise.
 
-  if ( $self->winner() ) { .. 
+  if ( $self->hasAWinner() ) { .. 
 
 return Number
 
 =cut
 
-sub winner {
+sub hasAWinner {
   my ( $self ) = @_;
+
+  my $winners = $self->_winners();
+
+  # If a players got value 1, it means a winner
+  return 1 if grep { $_ == 1 } values %$winners;
+
+  return 0;
+}
+
+#------------------------------------------------------------------------------
+
+=head2 getWinner
+
+Returns the winning player name or undef if none.
+
+  my $winning_player = $self->getWinner();
+  
+return String
+
+=cut
+
+sub getWinner {
+  my ( $self ) = @_;
+
+  return unless $self->hasAWinner();
+
+  my $winners = $self->_winners();
+ 
+  my @winner = grep { $winners->{ $_ } == 1 } keys %$winners; 
+
+  return @winner ? $winner[0] : undef;
+}
+
+#------------------------------------------------------------------------------
+
+=head2 isWinner
+
+Returns 1 if supplied player is the one winning, 0 if game is still running, and
+-1 if the player supplied lost.
+
+  if ( $self->isWinner( L<TicTacToe::Player::Interface> ) ) { .. 
+
+return Number
+
+=cut
+
+sub isWinner {
+  my ( $self, $player ) = @_;
+
+  # No player supplied, no logical answer to give.
+  return 0 unless $player;
+
+  my $winner = $self->getWinner();
+
+  return 0 unless $winner;
+
+  return 1 if uc( $winner ) eq uc( $player->name );
+
+  return 0;
+}
+
+#------------------------------------------------------------------------------
+
+=head2 _winners
+
+PRIVATE
+
+Goes over the given game and returns the players status in a hash ref by name
+and values be of 1 for winning, 0 for unknown.
+
+  my $winners = $self->_winners();
+
+If players A and B where A wins, returning a structure like this:
+  {
+    A => 1,
+    B => 0,
+  }
+
+If A and B have not yet finished the game or it is a tie:
+
+  {
+    A => 0,
+    B => 0,
+  }
+
+return Number
+
+=cut
+
+sub _winners {
+  my ( $self ) = @_;
+
+  my %winners;
 
   # Going over all possible winning combinations.
   foreach my $cells ( @WINNING_CELLS ) {
@@ -120,25 +212,28 @@ sub winner {
     # The given list of $cells must have same values to be a winning position.
     my %same_values;
     foreach my $cell ( @$cells ) {
-      my $player = $self->_data->{ $cell };
+      my $player_name = $self->_data->{ $cell };
 
       # If the cell does not have data, then it is not yet played 
       # and thus impossible win in this cell group.
-      last if ( $player // '' ) eq '';
+      last if ( $player_name // '' ) eq '';
 
-      $same_values{ $player }++;
+      $winners{ $player_name } ||= 0;
+      $same_values{ $player_name }++;
     }
 
     # No keys set on %same_value, means nothing played in this group of cells
     next unless keys %same_values;
 
     # Plays happened in these 3 $cells from the same player. 
-    return 1 if max( values %same_values ) == 3;
+    if ( max( values %same_values ) == 3 ) {
+      my $winning_player = ( %same_values )[0];
+      $winners{ $winning_player } = 1;
+      last;
+    }
   }
 
-  return -1 unless scalar @{ $self->availableActions() };
- 
-  return 0;
+  return \%winners;
 }
 
 #------------------------------------------------------------------------------
@@ -155,8 +250,11 @@ return string
 
 sub state {
   my ( $self ) = @_;
-
-  return join( ',', values %{ $self->_data } ); 
+  return join( '/', 
+    map { $self->_data->{ $_ } } 
+      sort { $a <=> $b } 
+        keys %{ $self->_data } 
+  ); 
 }
 
 #------------------------------------------------------------------------------

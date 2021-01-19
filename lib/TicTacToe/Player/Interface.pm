@@ -43,6 +43,17 @@ be returned.
 
 return string
 
+=head2 gameOver
+
+Given a L<TicTacToe::Model::Board> class, updates the player with any details
+when the game is about to be closed. This is quite useful for learning agents
+that may wish to update the outcomes of the game or reset their steps to a new
+start.
+
+  $self->gameOver( L<TicTacToe::Model::Board> );
+
+return string
+
 =cut
 
 use Modern::Perl;
@@ -53,6 +64,7 @@ use namespace::clean;
 requires qw{
   name
   getPlayFrom
+  gameOver
 };
 
 #------------------------------------------------------------------------------

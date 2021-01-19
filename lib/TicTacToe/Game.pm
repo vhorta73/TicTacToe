@@ -24,6 +24,8 @@ The winner implementation is returned or none if a tie.
 
 use Modern::Perl;
 
+use TicTacToe::Interactive::InputKeyReader qw{ getOneKey };
+
 use Moo;
 use namespace::clean;
 
@@ -33,48 +35,75 @@ use namespace::clean;
 =head2 run
 
 Runs the game with a list of player class implementations. If a winner is found,
-the winning class is returned, otherwise, in case of a tie, undef is returned.
+the winning player name is returned, otherwise, in case of a tie, undef is returned.
+If the interactive option is set to FALSE, the game will run without displaying
+any game results.
 
-  my $winner = $self->run( 
-    L<TicTacToe::Player::Interface>, 
-    L<TicTacToe::Player::Interface> 
+  my $winner = $self->run(
+    players => [
+      L<TicTacToe::Player::Interface>, 
+      L<TicTacToe::Player::Interface>,
+    ]
+    options => {
+      interactive => 1,               # OPTIONAL: Default to 1
+    },
   );
 
-return L<TicTacToe::Player::Interface> or undef
+return String or undef
 
 =cut
 
 sub run {
-  my ( $self, @players ) = @_;
+  my ( $self, %arg ) = @_;
 
-  # Only playes if two players are supplied.
-  return unless @players == 2;
+  my $players = $arg{players};
+  my $options = $arg{options};
+
+  # Only players if two players are supplied.
+  return unless @$players == 2;
+
+  my $interactive = $options->{interactive} // 1;
 
   my $controller = TicTacToe::Controller->new(
-    view => TicTacToe::View->new(),
+    view    => TicTacToe::View->new(),
+    players => $players,
   );
 
-  my ( $player, $player_index, $end_game );
+  my ( $player, $player_index, $end_game, $winner );
   
   my %game = map { $_ => '', } ( 1 .. 9 );
-  $controller->showBoard( %game );
+
+  $controller->showBoard( %game ) if $interactive;
 
   do {
     $player_index = $self->_nextPlayerIndex( $player_index );
-    $player       = $players[ $player_index ];
+    $player       = $players->[ $player_index ];
 
     %game = $controller->play( 
-      player => $player,
-      game   => \%game,
+      player      => $player,
+      game        => \%game,
+      interactive => $interactive,
     );
 
-    $controller->showBoard( %game );
+    $controller->showBoard( %game ) if $interactive;
+ 
+  } until ( $controller->isGameOver( %game ) );
 
-    $end_game = $controller->hasWinner( %game );
+  my $winning_player_name = $controller->getWinner( %game );
 
-  } until ( $end_game );
+  if ( $interactive ) {
+    if ( $winning_player_name ) {
+      print "Player " . $winning_player_name . " has won!!\n";
+    }
+    else {
+      print "It was a tie!\n";
+    }
 
-  return $end_game == 1 ? $player : undef ;
+    print "Please press any key to continue . . .\n";
+    getOneKey();
+  } 
+  
+  return $winning_player_name;
 }
 
 #------------------------------------------------------------------------------

@@ -25,7 +25,6 @@ use namespace::clean;
 
 with 'TicTacToe::Player::Interface';
 
-
 #------------------------------------------------------------------------------
 
 =head2 _player_name
@@ -123,6 +122,18 @@ sub _selectAction {
 
   return $selected_action;
 }
+
+#------------------------------------------------------------------------------
+
+=head2 gameOver
+
+See L<TicTacToe::Player::Interface/gameOver>
+
+Noop
+
+=cut
+
+sub gameOver { return; }
 
 #------------------------------------------------------------------------------
 1;

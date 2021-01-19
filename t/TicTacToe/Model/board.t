@@ -16,7 +16,8 @@ my @board_test = (
     msg         => 'Testing no args',
     init_args   => {}, 
     tests       => [
-      { method_name => 'winner', expected => 0, },
+      { method_name => 'hasAWinner', expected => 0, },
+      { method_name => 'getWinner',  expected => undef, },
     ]
   },
   { 
@@ -27,7 +28,8 @@ my @board_test = (
       1 => '', 2 => '', 3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 0, },
+      { method_name => 'hasAWinner', expected => 0, },
+      { method_name => 'getWinner',  expected => undef, },
     ]
   },
   { 
@@ -38,7 +40,8 @@ my @board_test = (
       1 => '1', 2 => '1', 3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => -1, },
+      { method_name => 'hasAWinner', expected => 0, },
+      { method_name => 'getWinner',  expected => undef, },
     ]
   },
   { 
@@ -49,7 +52,8 @@ my @board_test = (
       1 => '1', 2 => '1', 3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -60,7 +64,8 @@ my @board_test = (
       1 => '',  2 => '',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -71,7 +76,8 @@ my @board_test = (
       1 => '',  2 => '',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -82,7 +88,8 @@ my @board_test = (
       1 => '1',  2 => '',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -93,7 +100,8 @@ my @board_test = (
       1 => '',  2 => '1',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -104,7 +112,8 @@ my @board_test = (
       1 => '',  2 => '',  3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -115,7 +124,8 @@ my @board_test = (
       1 => '1', 2 => '',  3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -126,7 +136,8 @@ my @board_test = (
       1 => '',  2 => '',  3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -137,7 +148,8 @@ my @board_test = (
       1 => '1', 2 => '1', 3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -148,7 +160,8 @@ my @board_test = (
       1 => '',  2 => '',  3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -159,7 +172,8 @@ my @board_test = (
       1 => '2', 2 => '2', 3 => '', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -170,7 +184,8 @@ my @board_test = (
       1 => '1',  2 => '',  3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -181,7 +196,8 @@ my @board_test = (
       1 => '',  2 => '1',  3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -192,7 +208,8 @@ my @board_test = (
       1 => '2', 2 => '',  3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -203,7 +220,8 @@ my @board_test = (
       1 => '1', 2 => '2', 3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -214,7 +232,8 @@ my @board_test = (
       1 => '2', 2 => '2', 3 => '1', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 1, },
     ]
   },
   { 
@@ -225,7 +244,21 @@ my @board_test = (
       1 => '1', 2 => '1', 3 => '2', 
     }, 
     tests       => [
-      { method_name => 'winner', expected => 1, },
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 2, },
+    ]
+  },
+
+  { 
+    msg         => 'Testing combined winning cross up on other player',
+    init_args   => {
+      7 => '2', 8 => '1', 9 => '1',
+      4 => '1', 5 => '2', 6 => '1', 
+      1 => '1', 2 => '1', 3 => '2', 
+    }, 
+    tests       => [
+      { method_name => 'hasAWinner', expected => 1, },
+      { method_name => 'getWinner',  expected => 2, },
     ]
   },
 
