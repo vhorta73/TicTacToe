@@ -156,7 +156,7 @@ sub gameOver {
   my $winner = $board_model->getWinner();
   my $reward = defined $winner 
     ? uc( $self->name ) eq uc( $winner // '' ) 
-      ? 1
+      ? 10
       : -10
     : 1;
 
