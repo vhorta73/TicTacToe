@@ -25,6 +25,8 @@ The winner implementation is returned or none if a tie.
 use Modern::Perl;
 
 use TicTacToe::Interactive::InputKeyReader qw{ getOneKey };
+use TicTacToe::Controller;
+use TicTacToe::View;
 
 use Moo;
 use namespace::clean;
