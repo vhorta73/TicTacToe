@@ -21,8 +21,10 @@ use Modern::Perl;
 use Moo;
 use namespace::clean;
 
-extends 'TicTacToe::Player';
-with 'TicTacToe::Player::Interface';
+extends qw{ TicTacToe::Player };
+with (
+  'TicTacToe::Player::Interface'
+);
 
 #------------------------------------------------------------------------------
 
@@ -55,6 +57,7 @@ sub BUILDARGS {
 
   return {
     _player_name => $arg{name},
+    xo           => $arg{xo},
   };
 }
 

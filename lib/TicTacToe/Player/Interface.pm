@@ -54,6 +54,16 @@ start.
 
 return string
 
+=head2 xo
+
+Required to be supplied at instantiation to set which choice player made if 
+playing as X or as O. It does not accept other values and will die if none is
+supplied at instantiation.
+
+  my $xo = $self->xo();
+
+return string
+
 =cut
 
 use Modern::Perl;
@@ -63,6 +73,7 @@ use namespace::clean;
 
 requires qw{
   name
+  xo
   getPlayFrom
   gameOver
 };

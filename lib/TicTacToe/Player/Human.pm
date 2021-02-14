@@ -23,6 +23,7 @@ use TicTacToe::Interactive::InputKeyReader qw{ getOneKey };
 use Moo;
 use namespace::clean;
 
+extends qw{ TicTacToe::Player };
 with 'TicTacToe::Player::Interface';
 
 #------------------------------------------------------------------------------
@@ -56,6 +57,7 @@ sub BUILDARGS {
 
   return {
     _player_name => $arg{name},
+    xo           => $arg{xo},
   };
 }
 

@@ -8,6 +8,7 @@ TicTacToe::Player::RLAgent - The TicTacToe Player RLAgent.
 
   my $rlagent_player = TicTacToe::Player::RLAgent->new(
     name => 'Player 1',
+    xo   => 'X',     # REQUIRED: String X or O.
   );  
 
 =head1 DESCRIPTION
@@ -25,8 +26,8 @@ use RLearn::Agent::IO::File;
 use Moo;
 use namespace::clean;
 
+extends qw{ TicTacToe::Player };
 with 'TicTacToe::Player::Interface';
-
 
 #------------------------------------------------------------------------------
 
@@ -61,7 +62,8 @@ sub BUILDARGS {
     _player_name => $arg{name} || 'R',
     _agent => RLearn::Agent::Reactive->new(
       io => RLearn::Agent::IO::File->new( file => "tictactoe$arg{name}.txt", delimiter => ' -> ' ),
-    )
+    ),
+    xo => $arg{xo},
   };
 }
 
@@ -129,13 +131,11 @@ sub getPlayFrom {
 
   my $state   = $arg{state} // '';
   my @actions = @{ $arg{actions} // [] };
-
+ 
   my $selected_action = $self->_agent->getActionFor( 
     state   => $state,
     actions => \@actions,
   );
-
-  # print $self->name . " [ " . join( ", ", @actions ) . " ] -> selected: $selected_action\n";
   
   return $selected_action;
 }
@@ -155,10 +155,10 @@ sub gameOver {
 
   my $winner = $board_model->getWinner();
   my $reward = defined $winner 
-    ? uc( $self->name ) eq uc( $winner // '' ) 
+    ? uc( $self->xo ) eq uc( $winner // '' ) 
       ? 10
       : -10
-    : 1;
+    : -1; # A tie is not very desireable, but not as bad.
 
   $self->_agent->updateRewardAtLastIteration( 
     state  => $board_model->state,

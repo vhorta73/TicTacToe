@@ -168,7 +168,7 @@ sub isWinner {
 
   return 0 unless $winner;
 
-  return 1 if uc( $winner ) eq uc( $player->name );
+  return 1 if uc( $winner ) eq uc( $player->xo );
 
   return 0;
 }
@@ -179,22 +179,22 @@ sub isWinner {
 
 PRIVATE
 
-Goes over the given game and returns the players status in a hash ref by name
+Goes over the given game and returns the players status in a hash ref by xo
 and values be of 1 for winning, 0 for unknown.
 
   my $winners = $self->_winners();
 
 If players A and B where A wins, returning a structure like this:
   {
-    A => 1,
-    B => 0,
+    X => 1,
+    O => 0,
   }
 
 If A and B have not yet finished the game or it is a tie:
 
   {
-    A => 0,
-    B => 0,
+    X => 0,
+    O => 0,
   }
 
 return Number
@@ -212,14 +212,14 @@ sub _winners {
     # The given list of $cells must have same values to be a winning position.
     my %same_values;
     foreach my $cell ( @$cells ) {
-      my $player_name = $self->_data->{ $cell };
+      my $player_xo = $self->_data->{ $cell };
 
       # If the cell does not have data, then it is not yet played 
       # and thus impossible win in this cell group.
-      last if ( $player_name // '' ) eq '';
+      last if ( $player_xo // '' ) eq '';
 
-      $winners{ $player_name } ||= 0;
-      $same_values{ $player_name }++;
+      $winners{ $player_xo } ||= 0;
+      $same_values{ $player_xo }++;
     }
 
     # No keys set on %same_value, means nothing played in this group of cells

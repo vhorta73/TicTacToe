@@ -37,7 +37,7 @@ use namespace::clean;
 =head2 run
 
 Runs the game with a list of player class implementations. If a winner is found,
-the winning player name is returned, otherwise, in case of a tie, undef is returned.
+the winning player xo is returned, otherwise, in case of a tie, undef is returned.
 If the interactive option is set to FALSE, the game will run without displaying
 any game results.
 
@@ -62,7 +62,21 @@ sub run {
   my $options = $arg{options};
 
   # Only players if two players are supplied.
-  return unless @$players == 2;
+  if ( @$players != 2 ) {
+    warn "Must supply two players.";
+    return;
+  }
+
+  if ( $players->[0]->xo eq $players->[1]->xo ) {
+    warn sprintf( 
+      "Cannot play with same xo: Player %s with %s and Player %s with %s. ",
+      $players->[0]->name,
+      $players->[0]->xo,
+      $players->[1]->name,
+      $players->[1]->xo
+    );
+    return;
+  }
 
   my $interactive = $options->{interactive} // 1;
 
@@ -91,11 +105,11 @@ sub run {
  
   } until ( $controller->isGameOver( %game ) );
 
-  my $winning_player_name = $controller->getWinner( %game );
+  my $winning_player_xo = $controller->getWinner( %game );
 
   if ( $interactive ) {
-    if ( $winning_player_name ) {
-      print "Player " . $winning_player_name . " has won!!\n";
+    if ( $winning_player_xo ) {
+      print "Player " . $winning_player_xo . " has won!!\n";
     }
     else {
       print "It was a tie!\n";
@@ -105,7 +119,7 @@ sub run {
     getOneKey();
   } 
   
-  return $winning_player_name;
+  return $winning_player_xo;
 }
 
 #------------------------------------------------------------------------------

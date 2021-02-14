@@ -180,7 +180,7 @@ sub play {
     interactive => $arg{interactive},
   );
 
-  return ( %game, $action_selected => $player->name );
+  return ( %game, $action_selected => $player->xo );
 }
 
 #------------------------------------------------------------------------------
