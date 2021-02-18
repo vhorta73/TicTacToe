@@ -7,8 +7,13 @@ TicTacToe::Game - The Main TicTacToe class
 =head1 SYNOPSYS
 
   my $winner = TicTacToe::Game->new()->run( 
-    L<TicTacToe::Player::Interface>, 
-    L<TicTacToe::Player::Interface>, 
+    players => [
+      L<TicTacToe::Player::Interface>, 
+      L<TicTacToe::Player::Interface>, 
+    ],
+    options => {
+      interactive => 1                  # OPTIONAL: Defaults to 1
+    }
   );
 
 =head1 DESCRIPTION
