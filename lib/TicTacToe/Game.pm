@@ -90,23 +90,23 @@ sub run {
     players => $players,
   );
 
-  my ( $player, $player_index, $end_game, $winner );
+  my ( $current_player, $next_player ) = @{ $players };
+  my ( $end_game, $winner );
   
   my %game = map { $_ => '', } ( 1 .. 9 );
 
   $controller->showBoard( %game ) if $interactive;
 
   do {
-    $player_index = $self->_nextPlayerIndex( $player_index );
-    $player       = $players->[ $player_index ];
-
     %game = $controller->play( 
-      player      => $player,
+      player      => $current_player,
       game        => \%game,
       interactive => $interactive,
     );
 
     $controller->showBoard( %game ) if $interactive;
+
+    ( $current_player, $next_player ) = ( $next_player, $current_player );
  
   } until ( $controller->isGameOver( %game ) );
 
@@ -125,30 +125,6 @@ sub run {
   } 
   
   return $winning_player_xo;
-}
-
-#------------------------------------------------------------------------------
-
-=head2 _nextPlayerIndex
-
-PRIVATE
-
-Toggles between 0 and 1 from the 0 or 1 index supplied. If no index is supplied, 
-defaults to 0.
-
-  my $next_player_index = $self->_nextPlayerIndex( $current_index );
-
-return number
-
-=cut
-
-sub _nextPlayerIndex {
-  my ( $self, $current_index ) = @_;
- 
-  return $current_index ? 0 : 1
-    if defined $current_index;
-
-  return 0;
 }
 
 #------------------------------------------------------------------------------
