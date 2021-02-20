@@ -13,6 +13,7 @@
   - [Quick Start](#quick-start)
   - [RLearn Agents](#rlearn-agents)
   - [Extending to other agent players](#extending-to-other-agent-players)
+  - [Final Remarks](#final-remarks)
 
 ## Installation
 
@@ -121,7 +122,7 @@ The then supplied RLearn Agent `$agent` will be available for update setting IO,
   $agent->load();
 
   # Do many loops until number of epocs are satisfied..
-  while ( ...  ) {
+  while ( ... ) {
     my $winner = $game->run(
       players => \@players,
       options => { interactive => 0, },
@@ -134,3 +135,7 @@ The then supplied RLearn Agent `$agent` will be available for update setting IO,
 ```
 
 For more details no how to work with `RLearn` agents, please visit [RLearn Configuration](https://github.com/vhorta73/RLearn#configuration)
+
+## Final remarks
+
+This project was build to provide an `Envrionment` for reinforcement learning studies and analysis. If any bugs or issues, please raise an issue, and it will be addressed as soon as possible.
