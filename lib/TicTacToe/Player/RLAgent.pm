@@ -60,10 +60,8 @@ sub BUILDARGS {
 
   return {
     _player_name => $arg{name} || 'R',
-    _agent => RLearn::Agent::Reactive->new(
-      io => RLearn::Agent::IO::File->new( file => "tictactoe$arg{name}.txt", delimiter => ' -> ' ),
-    ),
-    xo => $arg{xo},
+    _agent       => $arg{agent} || RLearn::Agent::Reactive->new(),
+    xo           => $arg{xo},
   };
 }
 
@@ -109,14 +107,7 @@ return L<RLearn::Agent::Reactive>
 
 =cut
 
-has _agent => ( 
-  is => 'ro',
-  default => sub { 
-    return RLearn::Agent::Reactive->new(
-      io => RLearn::Agent::IO::File->new( file => 'tictactoe.txt', delimiter => ' -> ' ),
-    ),
-  },
-);
+has _agent => ( is => 'ro', required => 1 );
 
 #------------------------------------------------------------------------------
 

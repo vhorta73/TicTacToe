@@ -7,7 +7,7 @@ my $build = Module::Build->new(
   test_files      => [
     't/TicTacToe/Model',
   ],
-  requires => { 'RLearn' => '1.00', },
+  requires => { 'RLearn' => '0.02', },
 );
 
 $build->dispatch( 'build' );
