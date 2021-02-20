@@ -7,7 +7,7 @@
 <!--END-->
 
 # Contents
-  - [Instal;ation](#installation)
+  - [Installation](#installation)
 
 
 ## Installation
