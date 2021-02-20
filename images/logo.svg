@@ -13,4 +13,5 @@
   <line x1="100" y1="150" x2="300" y2="150" stroke="black" stroke-width="3" />
   <line x1="177" y1="110" x2="224" y2="140" stroke="black" stroke-width="2" />
   <line x1="224" y1="110" x2="177" y2="140" stroke="black" stroke-width="2" />
+  <text x="300" y="135" fill="aliceblue" font-family="sans-serif" font-size="30">Tic-Tac-Toe</text>
 </svg>
