@@ -3,7 +3,7 @@
     <img align="center" width="60%" src="images/logo.svg" alt="Logo">
   </p>
   <h1 align="center">Tic - Tac - Toe</h1>
-  <h3 align="center"><i>The Tic-tac-toe game written in perl open for machine learning investigations</i></h3>
+  <h3 align="center"><i>The Tic-tac-toe game written in perl for machine learning investigations.</i></h3>
 
   <br>
 <!--END-->
@@ -54,7 +54,7 @@ One single command line for installation.
   # Playing the game and getting the winner.
   my $winner = $game->run( players => \@players );
 
-  print "... and the winer is: $winner \n";
+  print "... and the winner is: $winner \n";
 
 ```
 
@@ -62,7 +62,7 @@ One single command line for installation.
 
 This game was originally build to work with [RLearn](https://github.com/vhorta73/RLearn) project, to aid with the reinforcement learning investigations. To use this module, please first follow installation procedures set [here](https://github.com/vhorta73/RLearn#install).
 
-The following example contain most of the code lines from the quick start section, with a few extra lines. This example will provide a memory only reinforcement learning agent. 
+The following example provides the minimum memory only reinforcement learning agent implementation which will be equivalent to a random agent. 
 
 ```perl
 
