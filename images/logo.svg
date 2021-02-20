@@ -2,7 +2,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    width="400"
-   height="200"
+   height="300"
    version="1.1"
 >
   <ellipse rx="200" ry="25" cx="200" cy="200" fill="beige" opacity="0.1" />
