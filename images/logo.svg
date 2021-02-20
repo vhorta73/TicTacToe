@@ -1,12 +1,12 @@
 <svg
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   width="400"
+   width="600"
    height="300"
    version="1.1"
 >
-  <ellipse rx="200" ry="25" cx="200" cy="200" fill="beige" opacity="0.3" />
-  <polygon points="200,175 400,200 200,225 0,200" fill="aqua" opacity=".2"/> 
+  <ellipse rx="300" ry="25" cx="300" cy="200" fill="beige" opacity="0.3" />
+  <polygon points="300,175 600,200 300,225 0,200" fill="aqua" opacity=".2"/> 
   <line x1="167" y1="50" x2="167" y2="200" stroke="black" stroke-width="3"/>
   <line x1="234" y1="50" x2="234" y2="200" stroke="black" stroke-width="3" />
   <line x1="100" y1="100" x2="300" y2="100" stroke="black" stroke-width="3" />
