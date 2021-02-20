@@ -5,7 +5,7 @@
    height="300"
    version="1.1"
 >
-  <ellipse rx="300" ry="25" cx="300" cy="200" fill="black" opacity="0.2" />
+  <ellipse rx="300" ry="25" cx="300" cy="250" fill="black" opacity="0.1" />
   <polygon points="300,175 600,200 300,225 0,200" fill="#00ff95" opacity="1"/> 
   <line x1="167" y1="50" x2="167" y2="200" stroke="#797979" stroke-width="3"/>
   <line x1="234" y1="50" x2="234" y2="200" stroke="#797979" stroke-width="3" />
