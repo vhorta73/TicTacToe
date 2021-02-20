@@ -67,13 +67,27 @@ This game was originally build to work with [RLearn](https://github.com/vhorta73
   use TicTacToe::Player::RLAgent;
   use TicTacToe::Player::Human;
 
-  my $human_player        = TicTacToe::Player::Human->new( name => 'Human', xo => 'X' );
-  my $rlearn_agent_player = TicTacToe::Player::RLAgent->new( name => 'RLAgent', xo => 'o' );
+  # Instantiating a Human player to become the X.
+  my $human_player = TicTacToe::Player::Human->new( 
+    name => 'Human', 
+    xo   => 'X', 
+  );
+
+  # Instantiating a RLearn player to become the O.
+  my $rlearn_agent_player = TicTacToe::Player::RLAgent->new( 
+    name => 'RLAgent', 
+    xo => 'O' 
+  );
+
+  # Tossing the coin on who will play first.
   my @players             = rand() > 0.5 
     ? ( $human_player,        $rlearn_agent_player ) 
     : ( $rlearn_agent_player, $human_player        );
 
+  # Instantiating a Tic-tac-toe game.
   my $game   = TicTacToe::Game->new();
+
+  # Playing the game and getting the winner.
   my $winner = $game->run( players => \@players );
 
   print "... and the winer is: $winner \n";
