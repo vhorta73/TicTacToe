@@ -11,6 +11,8 @@
 # Contents
   - [Installation](#installation)
   - [Quick Start](#quick-start)
+  - [RLearn Agents](#rlearn-agents)
+  - [Extending to other agents](#extending-to-other-agents)
 
 ## Installation
 
@@ -54,3 +56,29 @@ One single command line for installation.
   print "... and the winer is: $winner \n";
 
 ```
+
+### RLearn Agents
+
+This game was originally build to work with [RLearn](https://github.com/vhorta73/RLearn) project, to aid with the reinforcement learning investigations. To use this module, please follow the installation procedures [here](https://github.com/vhorta73/RLearn#install), before attempting the below example:
+
+```perl
+
+  use TicTacToe::Game;
+  use TicTacToe::Player::RLAgent;
+  use TicTacToe::Player::Human;
+
+  my $human_player        = TicTacToe::Player::Human->new( name => 'Human', xo => 'X' );
+  my $rlearn_agent_player = TicTacToe::Player::RLAgent->new( name => 'RLAgent', xo => 'o' );
+  my @players             = rand() > 0.5 
+    ? ( $human_player,        $rlearn_agent_player ) 
+    : ( $rlearn_agent_player, $human_player        );
+
+  my $game   = TicTacToe::Game->new();
+  my $winner = $game->run( players => \@players );
+
+  print "... and the winer is: $winner \n";
+
+```
+
+### Extending to other agents
+
