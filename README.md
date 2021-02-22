@@ -3,7 +3,7 @@
     <img align="center" width="60%" src="logo.svg" alt="Logo">
   </p>
   <h1 align="center">Tic - Tac - Toe</h1>
-  <h3 align="center"><i>The Tic-tac-toe game written in perl for machine learning investigations.</i></h3>
+  <h4 align="center"><i>The Tic-tac-toe game written in perl for machine learning investigations.</i></h4>
 
   <br>
 <!--END-->
