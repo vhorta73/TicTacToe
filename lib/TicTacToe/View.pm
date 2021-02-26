@@ -39,7 +39,7 @@ has board => (
   default => sub {
     return TicTacToe::View::Board->new();
   },
-  handles => [qw{ show }],
+  handles => [qw{ print }],
 );
 
 

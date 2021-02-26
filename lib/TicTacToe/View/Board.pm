@@ -8,14 +8,14 @@ TicTacToe::View::Board - The TicTacToe Board view class
 
   my $view_board = TicTacToe::View::Board->new();
 
-  $view_board->show( %data );
+  $view_board->print( %data );
 
 =head1 DESCRIPTION
 
 The tic-tac-toe view class knowing how to display the game based on the data
-supplied. Main method is L</show> and will work as follows:
+supplied. Main method is L</print> and will work as follows:
 
-  $self->show( 
+  $self->print( 
     data => {
       7 => '',  8 => 'X', 9 => '',
       4 => '',  5 => '',  6 => '',
@@ -53,12 +53,12 @@ const my @GAME_STRUCTURE   => (
 
 #------------------------------------------------------------------------------
 
-=head2 show
+=head2 print
 
 Displays to terminal the tic-tac-toe board updated with the given data. If no
 data is supplied, nothing is done. Data structure is expected as follows:
 
-  $self->show( 
+  $self->shprintow( 
     data => {
       7 => '',  8 => 'X', 9 => '',
       4 => '',  5 => '',  6 => '',
@@ -81,7 +81,7 @@ return nothing
 
 =cut
 
-sub show {
+sub print {
   my ( $self, %arg ) = @_;
 
   my %data = %{ $arg{data} // return };
