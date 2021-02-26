@@ -41,7 +41,7 @@ has view => (
   default => sub {
     return TicTacToe::View->new();
   },
-  handles => [qw{ print }],
+  handles => [qw{ printBoard }],
 );
 
 #------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return nothing
 sub showBoard {
   my ( $self, %game ) = @_;
 
-  $self->print( data => \%game );
+  $self->printBoard( data => \%game );
 
   return;
 }
