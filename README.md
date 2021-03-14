@@ -138,4 +138,4 @@ For more details no how to work with `RLearn` agents, please visit [RLearn Confi
 
 ## Final remarks
 
-This project was build to provide an `Envrionment` for reinforcement learning studies and analysis. If any bugs or issues, please raise an issue, and it will be addressed as soon as possible.
+This project was build to provide an `Environment` for reinforcement learning studies and analysis. If any bugs or issues, please raise an issue, and it will be addressed as soon as possible.
