@@ -74,17 +74,22 @@ has players => (
 Given the game data to display, it calls respective view to process given data
 and print it on the STDIO.
 
-  $self->showBoard( %game );
+  $self->showBoard( L<TicTacToe::Model::Board> );
 
 return nothing
 
 =cut
 
 sub showBoard {
-  my ( $self, %game ) = @_;
+  my ( $self, $game_board ) = @_;
 
-  $self->printBoard( data => \%game );
-
+  if ( $game_board ) {
+    $self->printBoard( board => $game_board );
+  }
+  else {
+    $self->printBoard();
+  }
+  
   return;
 }
 
@@ -94,16 +99,14 @@ sub showBoard {
 
 Returns 1 if there are no more plays or if there is a winner, and 0 oterhwise.
 
-  if ( $self->isGameOver( %game );
+  if ( $self->isGameOver( L<TicTacToe::Model::Board> );
 
 return Boolean
 
 =cut
 
 sub isGameOver {
-  my ( $self, %game ) = @_;
-
-  my $board_model = TicTacToe::Model::Board->new( %game );
+  my ( $self, $board_model ) = @_;
 
   my $available_actions = scalar @{ $board_model->availableActions() };
 
@@ -128,16 +131,14 @@ sub isGameOver {
 
 Returns the winning player or undef.
 
-  my $winner = $self->getWinner( %game );
+  my $winner = $self->getWinner( L<TicTacToe::Model::Board> );
 
 return L<TicTacToe::Player::Interface> or undef
 
 =cut
 
 sub getWinner {
-  my ( $self, %game ) = @_;
-
-  my $board_model = TicTacToe::Model::Board->new( %game );
+  my ( $self, $board_model ) = @_;
 
   return $board_model->getWinner;
 }
@@ -151,25 +152,23 @@ with the selected action played.
 
   my %game = $self->play(
     player      => L<TicTacToe::Player::Interface>, # REQUIRED
-    game        => $game,                           # REQUIRED: Hash ref
-    interactive => $interactive,                    # OPTIONAL: Defaults to FALSE
+    game_board  => L<TicTacToe::Model::Board>,      # OPTIONAL: Defaults to empty board
   );
 
-return hash 
+return L<TicTacToe::Model::Board>
 
 =cut
 
 sub play {
   my ( $self, %arg ) = @_;
   
-  my %game        = %{ $arg{game} };
+  my $board_model = $arg{game_board} // TicTacToe::Model::Board->new();
   my $player      = $arg{player};
-  my $board_model = TicTacToe::Model::Board->new( %game );
   my $actions     = $board_model->availableActions();
   my $state       = $board_model->state();
 
   # Give up play if no actions available.
-  return %game unless scalar @$actions;
+  return $board_model unless scalar @$actions;
 
   my $reward = $board_model->isWinner( $player ) ? 1 : 0;
 
@@ -177,10 +176,12 @@ sub play {
     state       => $state,
     actions     => $actions,
     reward      => $reward,
-    interactive => $arg{interactive},
   );
 
-  return ( %game, $action_selected => $player->xo );
+  return TicTacToe::Model::Board->new(
+    %{ $board_model->data() }, 
+    $action_selected => $player->xo,
+  );
 }
 
 #------------------------------------------------------------------------------
@@ -205,6 +206,7 @@ sub tellPlayers {
  
   return;
 }
+
 #------------------------------------------------------------------------------
 1;
 #------------------------------------------------------------------------------

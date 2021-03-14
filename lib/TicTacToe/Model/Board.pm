@@ -52,20 +52,18 @@ const my @WINNING_CELLS => (
 
 #------------------------------------------------------------------------------
 
-=head2 _data
-
-PRIVATE
+=head2 data
 
 The board data as known, represented with cell numbers as keys and respective
 cell values as values.
 
-  my $data = $self->_data();
+  my $data = $self->data();
 
 return hash ref
 
 =cut
 
-has _data => ( is => 'ro', required => 1 );
+has data => ( is => 'ro', required => 1 );
 
 #------------------------------------------------------------------------------
 
@@ -90,7 +88,7 @@ sub BUILDARGS {
 
   my $arg = {};
   foreach my $cell_key ( 1 .. 9 ) {
-    $arg->{_data}->{ $cell_key } = $board_data{ $cell_key } 
+    $arg->{data}->{ $cell_key } = $board_data{ $cell_key } 
       ? $board_data{ $cell_key } 
       : '';
   }
@@ -212,7 +210,7 @@ sub _winners {
     # The given list of $cells must have same values to be a winning position.
     my %same_values;
     foreach my $cell ( @$cells ) {
-      my $player_xo = $self->_data->{ $cell };
+      my $player_xo = $self->data->{ $cell };
 
       # If the cell does not have data, then it is not yet played 
       # and thus impossible win in this cell group.
@@ -251,9 +249,9 @@ return string
 sub state {
   my ( $self ) = @_;
   return join( '/', 
-    map { $self->_data->{ $_ } } 
+    map { $self->data->{ $_ } } 
       sort { $a <=> $b } 
-        keys %{ $self->_data } 
+        keys %{ $self->data } 
   ); 
 }
 
@@ -272,7 +270,7 @@ return array ref
 sub availableActions {
   my ( $self ) = @_;
 
-  return [ grep { $self->_data->{ $_ } eq '' } keys %{ $self->_data } ]; 
+  return [ grep { $self->data->{ $_ } eq '' } keys %{ $self->data } ]; 
 }
 
 #------------------------------------------------------------------------------

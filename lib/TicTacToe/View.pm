@@ -39,11 +39,36 @@ has board => (
   default => sub {
     return TicTacToe::View::Board->new();
   },
-  handles => {
-    printBoard => 'print',
-  },
 );
 
+#------------------------------------------------------------------------------
+
+=head2 printBoard
+
+Printing board supplied into STDIO.
+
+  my $board = $self->printBoard(
+    board => L<TicTacToe::Model::Board> # OPTIONAL: Defaults to empty board
+  );
+
+return nothing
+
+=cut
+
+sub printBoard {
+  my ( $self, %arg ) = @_;
+
+  if ( my $board = $arg{board} ) {
+
+    $self->board->print( data => $board->data() );
+
+    return;
+  }
+
+  $self->board->print( data => TicTacToe::Model::Board->new()->data() );
+
+  return;
+}
 
 #------------------------------------------------------------------------------
 1;

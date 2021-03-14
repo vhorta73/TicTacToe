@@ -91,26 +91,23 @@ sub run {
   );
 
   my ( $current_player, $next_player ) = @{ $players };
-  my ( $end_game, $winner );
+  my ( $end_game, $winner, $game_board );
   
-  my %game = map { $_ => '', } ( 1 .. 9 );
-
-  $controller->showBoard( %game ) if $interactive;
+  $controller->showBoard() if $interactive;
 
   do {
-    %game = $controller->play( 
+    $game_board = $controller->play( 
       player      => $current_player,
-      game        => \%game,
-      interactive => $interactive,
+      game_board  => $game_board,
     );
 
-    $controller->showBoard( %game ) if $interactive;
+    $controller->showBoard( $game_board ) if $interactive;
 
     ( $current_player, $next_player ) = ( $next_player, $current_player );
  
-  } until ( $controller->isGameOver( %game ) );
+  } until ( $controller->isGameOver( $game_board ) );
 
-  my $winning_player_xo = $controller->getWinner( %game );
+  my $winning_player_xo = $controller->getWinner( $game_board );
 
   if ( $interactive ) {
     if ( $winning_player_xo ) {
